@@ -159,7 +159,8 @@ function getCurrentMonthFirst(){
 //防止SQL注入
 const antiSqlValid = function (oField )
 {
-    let re= /select|update|delete|exec|count|'|"|=|;|>|<|%/i;
+    let re= /select|update|delete|exec|insert|drop|limit|and|where|;|%/i;
+    // let re= /^\?(.*)(select |insert |delete from|count\(|drop table|update truncate |asc\(|mid\(|char\(|xp_cmdshell|exec master|net localgroup administrators|\"|:|net user|\| or )(.*)$/gi;
     if ( re.test(oField) )
     {
         return false;
