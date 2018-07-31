@@ -7,14 +7,13 @@ const { query } = require('../database/async-db');
 //获取数据
 let getData = function ( val ){
     let num = 10;
-    let _sql = "select * from account where time>="+global.escape(val.startTime)+" and time<="+global.escape(val.endTime)+" limit "+val.page+","+num+"";
-    // console.log(_sql);
+    let _sql = "select * from account where time>="+global.escape(val.startTime)+" and time<="+global.escape(val.endTime)+" order by time "+val.sort+" limit "+val.page+","+val.pagenum+"";
     return query( _sql )
 }
 // 添加
 let insertData = function( val ) {
     let _sql = "insert into account(time,discription,price,remarks) values(?,?,?,?);"
-    return query( _sql, [global.escape(val.time),global.escape(val.discription),global.escape(val.price),global.escape(val.remarks)] )
+    return query( _sql, [val.time,val.discription,val.price,val.remarks] )
 }
 // 修改
 let editData = function ( val ) {

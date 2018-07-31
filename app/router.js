@@ -15,5 +15,7 @@ routes.push(router.post('/account/add',account.add));
 routes.push(router.get('/account/index',account.index));
 routes.push(router.get('/account/delete',account.del));
 routes.push(router.get('/account/getinfo',account.getInfo));
+routes.push(router.get('/account/statistics',account.statistics));
+routes.push(router.post('/account/update',account.updateInfo));
 
 module.exports = routes;

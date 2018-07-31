@@ -27,6 +27,7 @@ log4js.configure({
 const logger = log4js.getLogger('normal');
 global.logger = logger;
 
+
 //写入日志方法
 // global.logger.trace('Entering cheese testing');
 // global.logger.debug('Got cheese.');

@@ -1,5 +1,5 @@
-import {sqlitString} from '../extend/tools';
-
+// import {sqlitString} from '../extend/tools';
+const {sqlitString} = require('../extend/tools')
 
 const about = (cxt,next) => {
     let query = cxt.request.query;

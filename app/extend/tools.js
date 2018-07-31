@@ -1,14 +1,15 @@
 const querystring = require('querystring');  
 
+
 /**
  * url 截取字符串，获取params
  * @param {*} str 需要截取的字符串
  */
-export function sqlitString(str){
+const sqlitString = function (str){
     if(str.indexOf('?') < 0){
         return '';
     }
-    return querystring.parse(str.substring(str.indexOf('?')+1));
+    return str.substring(str.indexOf('?')+1);
 };
 
 /**
@@ -21,7 +22,7 @@ export function sqlitString(str){
  * 例：phone('13456434564')
  */
 
-export function phone(size) {
+const phone = function (size) {
     let rule = /^1[3456789]\d{9}$/;
     let res = {
         status:true,
@@ -56,7 +57,7 @@ export function phone(size) {
  * status: true or false
  * 例：VauleLength('123456','验证码)
  */
-export function VauleLength(size,tip,min=6,max=30) {
+const VauleLength = function (size,tip,min=6,max=30) {
     let res = {
         status:true,
         tip:'输入正确'
@@ -84,7 +85,7 @@ export function VauleLength(size,tip,min=6,max=30) {
  * vaildPassword('Aa123456')
  */
 
-export function vaildPassword(size) {
+const vaildPassword = function (size) {
     let rule = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{8,20}/;
     let res = {
         status:true,
@@ -101,4 +102,78 @@ export function vaildPassword(size) {
         return res;
     }
     return res;
+}
+/**
+ * 获取当前时间 2017-07-31
+ */
+const getNowFormatDate = function () {
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+}
+/**
+ * 时间格式化 2017-01-01
+ * @param {*} d 2018-07-30T16:00:00.000Z
+ */
+const format = function (d) {
+    var date = new Date(d);
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+}
+
+/**
+ * 获取当前月的第一天
+ */
+function getCurrentMonthFirst(){
+    var date=new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + "01";
+    return currentdate;
+}
+
+//防止SQL注入
+const antiSqlValid = function (oField )
+{
+    let re= /select|update|delete|exec|count|'|"|=|;|>|<|%/i;
+    if ( re.test(oField) )
+    {
+        return false;
+    }
+    return true;
+}
+
+module.exports = {
+    vaildPassword,
+    VauleLength,
+    phone,
+    sqlitString,
+    getNowFormatDate,
+    format,
+    getCurrentMonthFirst,
+    antiSqlValid
 }
