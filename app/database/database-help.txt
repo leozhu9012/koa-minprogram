@@ -1,0 +1,17 @@
+增加两个字段：
+alter table id_name add age int,add address varchar(11);
+删除两个字段
+alter table id_name drop column age,drop column address;
+修改一个字段
+alter table user MODIFY new1 VARCHAR(10);
+插入
+insert into id_name values (1,'qustdjx');
+查询看一下
+select * from id_name;
+新增字段并插入
+insert into id_name values(2,'qust',14,'山东');
+删除数据记录
+DELETE FROM id_name WHERE runoob_id=3;
+修改数据记录
+UPDATE id_name SET runoob_title='学习 C++' WHERE runoob_id=3;
+
