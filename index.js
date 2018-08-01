@@ -7,7 +7,6 @@ const bodyParser = require('koa-bodyparser')//解析post数据
 require('./app/config/global');
 global.rootUrl = __dirname;//获取项目根目录
 require('./app/extend/log4Config');
-// require('./app/extend/dateformat');
 const tools = require('./app/extend/tools');
 // 设置请求头部
 app.use(cors());
