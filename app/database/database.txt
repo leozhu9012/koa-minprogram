@@ -1,3 +1,4 @@
+#用户表
 create table if not exists users(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -9,7 +10,7 @@ create table if not exists users(
     role INT(11) NOT NULL,
     PRIMARY KEY ( id )
 );
-
+#系统管理员表
 create table if not exists admin(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -17,12 +18,35 @@ create table if not exists admin(
     role VARCHAR(40) NOT NULL,
     PRIMARY KEY ( id )
 );
-
+#账户明细表
 create table if not exists account(
     id INT NOT NULL AUTO_INCREMENT,
-    time VARCHAR(100) NOT NULL,
+    time date,
     discription VARCHAR(200) NOT NULL,
     price VARCHAR(100) NOT NULL,
     remarks VARCHAR(200) NOT NULL,
     PRIMARY KEY ( id )
 );
+#消费类型表
+create table if not exists consume_type(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    PRIMARY KEY ( id )
+);
+insert into consume_type (name)values("餐饮"),("交通"),("购物"),("娱乐"),("医教"),("居家"),("投资"),("人情"),("生意");
+#消费类型二级表
+create table if not exists consume_type_second(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    parentId VARCHAR(200) NOT NULL,
+    PRIMARY KEY ( id )
+);
+insert into consume_type_second (name,parentId)values("早餐","1"),("午餐","1"),("晚餐","1"),("饮料水果","1"),("零食","1"),("买菜原料","1"),("夜宵","1"),("油盐酱醋","1"),("餐饮其他","1");
+insert into consume_type_second (name,parentId)values("打车","2"),("公交","2"),("加油","2"),("停车费","2"),("地铁","2"),("火车","2"),("长途汽车","2"),("过路过桥","2"),("飞机","2"),("车款车贷","2"),("罚款赔偿","2"),("车险","2"),("自行车","2"),("船舶","2"),("驾照费用","2"),("交通其他","2");
+insert into consume_type_second (name,parentId)values("服饰鞋包","3"),("家具百货","3");
+insert into consume_type_second (name,parentId)values("旅游度假","4"),("电影","4");
+insert into consume_type_second (name,parentId)values("养生保健","5"),("医疗药品","5");
+insert into consume_type_second (name,parentId)values("手机电话","6"),("房款房贷","6");
+insert into consume_type_second (name,parentId)values("股票基金","7"),("理财产品","7");
+insert into consume_type_second (name,parentId)values("礼品红包","8"),("请客","8");
+insert into consume_type_second (name,parentId)values("进货采购","9"),("人工支出","9");

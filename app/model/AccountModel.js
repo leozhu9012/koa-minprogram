@@ -36,11 +36,25 @@ let findDataByTime = function ( time ) {
     return query( _sql )
 }
 
+// 获取消费类型
+let getType = function (){
+    let _sql = "select * from consume_type";
+    return query( _sql );
+}
+
+// 获取消费类型二级
+let getTypeSecond = function (id){
+    let _sql = "select * from consume_type_second where parentId="+id+"";
+    return query( _sql );
+}
+
 module.exports = {
     insertData,
     editData,
     deleteData,
     findDataById,
     findDataByTime,
-    getData
+    getData,
+    getType,
+    getTypeSecond
 }

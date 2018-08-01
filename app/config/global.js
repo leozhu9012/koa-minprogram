@@ -12,7 +12,6 @@ global.failed = function(msg){
 }
 //成功回掉方法封装
 global.success = function(msg,data){
-    console.log(data);
     return {
         code: errCode.success, 
         msg: msg,

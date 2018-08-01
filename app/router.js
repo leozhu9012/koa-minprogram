@@ -17,5 +17,6 @@ routes.push(router.get('/account/delete',account.del));
 routes.push(router.get('/account/getinfo',account.getInfo));
 routes.push(router.get('/account/statistics',account.statistics));
 routes.push(router.post('/account/update',account.updateInfo));
+routes.push(router.get('/account/type',account.getType));
 
 module.exports = routes;
